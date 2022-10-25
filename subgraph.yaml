@@ -1,0 +1,50 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MurAllNFT
+    network: matic
+    source:
+      address: "0xFfbce889D62F6C73f005B836255aD69B0a01b222"
+      abi: MurAllNFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - ArtworkFilled
+        - NewMetadataEncoderSet
+        - OwnershipTransferred
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Transfer
+        - TransferWithMetadata
+      abis:
+        - name: MurAllNFT
+          file: ./abis/MurAllNFT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ArtworkFilled(indexed uint256,bool)
+          handler: handleArtworkFilled
+        - event: NewMetadataEncoderSet(address)
+          handler: handleNewMetadataEncoderSet
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: TransferWithMetadata(indexed address,indexed address,indexed uint256,bytes)
+          handler: handleTransferWithMetadata
+      file: ./src/mur-all-nft.ts
