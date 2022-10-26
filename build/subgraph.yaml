@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: MurAllNFT
@@ -18,8 +18,8 @@ dataSources:
         - User
       abis:
         - name: MurAllNFT
-          file: ./abis/MurAllNFT.json
+          file: MurAllNFT\abis\MurAllNFT.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/mur-all-nft.ts
+      file: MurAllNFT\MurAllNFT.wasm
