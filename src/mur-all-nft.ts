@@ -11,8 +11,10 @@ export function handleTransfer(event: TransferEvent): void {
     token.creator = event.params.to.toHexString();
     token.createdAtTimestamp = event.block.timestamp;
     let tokenContract = MurAllNFTContract.bind(event.address);
+    token.tokenId = event.params.tokenId;
     token.contentURI = tokenContract.tokenURI(event.params.tokenId);
   }
+
   token.owner = event.params.to.toHexString();
   token.save();
 
