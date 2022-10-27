@@ -1,5 +1,5 @@
 type Token @entity {
-  id: ID!
+  id: Bytes!
   tokenId: BigInt
   contentURI: String!
   createdAtTimestamp: BigInt!
@@ -8,7 +8,7 @@ type Token @entity {
 }
 
 type User @entity{
-id: ID!
+id: Bytes!
 tokens: [Token!]! @derivedFrom(field:"owner")
 created: [Token!]! @derivedFrom(field:"creator")
 }

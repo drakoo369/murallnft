@@ -24,6 +24,5 @@ export function handleTransfer(event: TransferEvent): void {
     user.save();
   }
 
-
 }
  
